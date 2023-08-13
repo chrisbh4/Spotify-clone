@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="[scrollbar-gutter:stable]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title suffix=" · Phoenix Framework">
+      <%= assigns[:page_title] || "Spotify" %>
+    </.live_title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
+    </script>
+  </head>
+  <body class="bg-gray-200 antialiased">
+    <ul class="bg-red-400 h-14  relative z-10 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end">
+      <%= if @current_user do %>
+        <li class="text-2xl leading-6 text-zinc-900">
+          <%= @current_user.email %>
+        </li>
+        <li>
+          <.link
+            href={~p"/"}
+            class="text-2xl leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Home
+          </.link>
+        </li>
+        <li>
+          <.link
+            href={~p"/albums"}
+            class="text-2xl leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Album
+          </.link>
+        </li>
+        <li>
+          <.link
+            href={~p"/playlists"}
+            class="text-2xl leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Playlist
+          </.link>
+        </li>
+        <li>
+          <.link
+            href={~p"/users/settings"}
+            class="text-2xl leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Settings
+          </.link>
+        </li>
+        <li>
+          <.link
+            href={~p"/users/log_out"}
+            method="delete"
+            class="text-2xl leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Log out
+          </.link>
+        </li>
+      <% else %>
+        <li>
+          <.link
+            href={~p"/"}
+            class="text-2xl leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Home
+          </.link>
+        </li>
+        <li>
+          <.link
+            href={~p"/sign_up"}
+            class="text-2xl leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Sign up
+          </.link>
+        </li>
+        <li>
+          <.link
+            href={~p"/log_in"}
+            class="text-2xl leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Log in
+          </.link>
+        </li>
+      <% end %>
+    </ul>
+    <%= @inner_content %>
+  </body>
+</html>
