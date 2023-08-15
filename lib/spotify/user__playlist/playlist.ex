@@ -7,6 +7,8 @@ defmodule Spotify.User_Playlist.Playlist do
     field :tracks_total, :integer
     field :description, :string
     field :image, :string
+    belongs_to :user, Spotify.Account.User
+    many_to_many :songs, Spotify.Tracks.Track, join_through: "playlist_songs"
 
     timestamps()
   end

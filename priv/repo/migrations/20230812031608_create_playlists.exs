@@ -7,8 +7,11 @@ defmodule Spotify.Repo.Migrations.CreatePlaylists do
       add :tracks_total, :integer
       add :description, :string
       add :image, :string
+      add :user_id, references(:users, on_delete: :delete_all)
 
       timestamps()
     end
+
+    create index(:playlists, [:user_id])
   end
 end
