@@ -53,7 +53,7 @@ defmodule SpotifyWeb.Router do
     live_session :redirect_if_user_is_authenticated,
       on_mount: [{SpotifyWeb.UserAuth, :redirect_if_user_is_authenticated}] do
       # live "/", NavLive, :index
-      # live "/", HomeLive, :home
+      live "/home", HomeLive, :index
       live "/sign_up", UserRegistrationLive, :new
       live "/log_in", UserLoginLive, :new
       live "/users/reset_password", UserForgotPasswordLive, :new
