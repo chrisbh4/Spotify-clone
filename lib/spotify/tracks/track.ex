@@ -9,8 +9,8 @@ defmodule Spotify.Tracks.Track do
     field :stream_url, :string
     field :title, :string
 
-    belongs_to :artist, Spotify.Artists
-    belongs_to :album, Spotify.Albums
+    belongs_to :artist, Spotify.Artists.Artist
+    belongs_to :album, Spotify.Albums.Album
 
     timestamps()
   end
