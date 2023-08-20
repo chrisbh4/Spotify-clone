@@ -61,11 +61,20 @@ Repo.insert!(%Album{
 Repo.insert!(%Playlist{
   name: "Demo's Playlist",
   description: "This playlist goes crazzzzy!!!",
-  tracks_total: 23
+  tracks_total: 23,
+  user_id: 1
 })
 
 Repo.insert!(%Playlist{
   name: "Fav Rapper's colab",
   description: "Fire!!!!!",
-  tracks_total: 8
+  tracks_total: 8,
+  user_id: 1
+})
+
+Repo.insert!(%Playlist{
+  name: "User's 2 playlist",
+  description: "I mean it's alriiiight",
+  tracks_total: 8,
+  user_id: 2
 })

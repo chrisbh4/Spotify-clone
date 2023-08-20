@@ -18,5 +18,6 @@ defmodule Spotify.User_Playlist.Playlist do
     playlist
     |> cast(attrs, [:name, :tracks_total, :description, :image])
     |> validate_required([:name, :tracks_total])
+    |> assoc_constraint(:user)
   end
 end

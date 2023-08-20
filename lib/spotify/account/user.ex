@@ -10,6 +10,8 @@ defmodule Spotify.Account.User do
     field :following, :integer
     field :confirmed_at, :naive_datetime
 
+    has_many :playlists, Spotify.User_Playlist.Playlist
+
     timestamps()
   end
 

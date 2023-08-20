@@ -11,7 +11,7 @@ defmodule Spotify.Repo.Migrations.CreatePlaylists do
 
       timestamps()
     end
-
+    #* speeds up queries:
     create index(:playlists, [:user_id])
   end
 end
