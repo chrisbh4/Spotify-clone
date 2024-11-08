@@ -57,6 +57,9 @@ defmodule SpotifyWeb.PlaylistLive.FormComponent do
   end
 
   def handle_event("save", %{"playlist" => playlist_params}, socket) do
+    # Logger.info(save_hanle_event: socket.assigns.current_user)
+    Logger.info(socket: socket.assigns)
+    Logger.info(playlist_params: playlist_params)
     save_playlist(socket, socket.assigns.action, playlist_params)
   end
 
