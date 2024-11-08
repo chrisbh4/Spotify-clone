@@ -16,3 +16,38 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+
+Database Schema
+
+Playlist{
+  id,
+  name,
+  description,
+  user_id,
+  image,
+  playlist_song:{
+    artist_id, ref: Artisit
+    album_id, ref: Album
+    song_id,  ref: Song
+  }
+}
+
+Playlist_songs (Joins table){
+  id,
+  playlist_id,
+  song_id,
+}
+
+Song{
+  id,
+  name/title,
+  artist_id, ref: Artist
+  album_id, ref: Album
+  duration,
+}
+
+Follows{
+  id,
+  
+}

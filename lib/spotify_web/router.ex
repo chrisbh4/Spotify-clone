@@ -52,11 +52,13 @@ defmodule SpotifyWeb.Router do
 
     live_session :redirect_if_user_is_authenticated,
       on_mount: [{SpotifyWeb.UserAuth, :redirect_if_user_is_authenticated}] do
+      # live "/", NavLive, :index
+      live "/home", HomeLive, :index
       live "/sign_up", UserRegistrationLive, :new
       live "/log_in", UserLoginLive, :new
       live "/users/reset_password", UserForgotPasswordLive, :new
       live "/users/reset_password/:token", UserResetPasswordLive, :edit
-      # live "/playlist/create", SpotifyWeb.Playlist.AddPlaylistFormLive, :index
+      # post "/demo_log_in", UserController, :demo_log_in
     end
 
     post "/log_in", UserSessionController, :create
@@ -66,7 +68,7 @@ defmodule SpotifyWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     live_session :require_authenticated_user,
-    on_mount: [{SpotifyWeb.UserAuth, :ensure_authenticated}] do
+    on_mount: [{SpotifyWeb.UserAuth, :ensure_authenticated},{SpotifyWeb.UserAuth, :mount_current_user}] do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
 

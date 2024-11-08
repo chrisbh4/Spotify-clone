@@ -1,11 +1,13 @@
 defmodule SpotifyWeb.PlaylistLive.Index do
   use SpotifyWeb, :live_view
+  import Logger
 
   alias Spotify.User_Playlist
   alias Spotify.User_Playlist.Playlist
 
   @impl true
   def mount(_params, _session, socket) do
+    # Logger.info(socket: socket.assigns.current_user)
     {:ok, stream(socket, :playlists, User_Playlist.list_playlists())}
   end
 

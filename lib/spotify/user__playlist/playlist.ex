@@ -7,6 +7,8 @@ defmodule Spotify.User_Playlist.Playlist do
     field :tracks_total, :integer
     field :description, :string
     field :image, :string
+    belongs_to :user, Spotify.Account.User
+    many_to_many :songs, Spotify.Tracks.Track, join_through: "playlist_songs"
 
     timestamps()
   end
@@ -16,5 +18,6 @@ defmodule Spotify.User_Playlist.Playlist do
     playlist
     |> cast(attrs, [:name, :tracks_total, :description, :image])
     |> validate_required([:name, :tracks_total])
+    |> assoc_constraint(:user)
   end
 end
